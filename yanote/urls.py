@@ -3,11 +3,14 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import include, path
 from django.views.generic import CreateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('notes.urls')),
     path('admin/', admin.site.urls),
 ]
+
 
 auth_urls = ([
     path(
@@ -34,3 +37,7 @@ auth_urls = ([
 ], 'users')
 
 urlpatterns += [path('auth/', include(auth_urls))]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += (path('__debug__/', include(debug_toolbar.urls)),)
