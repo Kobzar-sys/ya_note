@@ -1,6 +1,4 @@
-from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
+from django.urls import path
 
 from notes import views
 
@@ -13,6 +11,5 @@ urlpatterns = [
     path('note/<slug:slug>/', views.NoteDetail.as_view(), name='detail'),
     path('delete/<slug:slug>/', views.NoteDelete.as_view(), name='delete'),
     path('notes/', views.NotesList.as_view(), name='list'),
-    path('done/', views.NoteSuccess.as_view(), name='success'),   
+    path('done/', views.NoteSuccess.as_view(), name='success'),
 ]
-
